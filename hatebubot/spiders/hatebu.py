@@ -52,10 +52,10 @@ class HatebuSpider(CrawlSpider):
             if is_ad:
                 continue
 
-            title = result.xpath("h3[1]/a/text()").extract()[0]
-            url = result.xpath("h3[1]/a/@href").extract()[0]
-            tags = result.xpath("div/div[@class='tags']/a/text()").extract()
-            category = result.xpath("div[@class='entryinfo']/a[1]/text()").extract()[0]
+            title = result.xpath(".//h3[1]/a/@title").extract()[0]
+            url = result.xpath(".//h3[1]/a/@href").extract()[0]
+            tags = result.xpath(".//div/div[@class='tags']/a/text()").extract()
+            category = result.xpath(".//div[@class='entryinfo']/a[1]/text()").extract()[0]
             num_users = convert_to_int_if_int(result.xpath(".//span[@class='users']/strong/a/span/text()").extract()[0])
             create_date = result.xpath(".//div[@class='entryinfo']/blockquote/span[@class='created']/text()").extract()[0]
 
